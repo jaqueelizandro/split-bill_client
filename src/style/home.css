@@ -1,0 +1,35 @@
+* {
+    /* border: 1px solid red; */
+    max-width: 960px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* <----------------- Home -----------------> */
+
+.title {
+    color: rgb(104,29,168);
+    font-size: 5em;
+}
+
+.logo {
+    font-size: 2em;
+    padding: 10px;
+}
+
+.btn {
+    background-color: rgb(255, 255, 255);
+    border: rgb(255, 255, 255);
+    color: rgb(104,29,168);
+}
+
+.btn-primary:hover {
+    background-color: rgb(104,29,168);
+    border: rgb(104,29,168);
+    color: rgb(255, 255, 255);
+}
+
+.about {
+    padding: 1em;
+    font-size: 40px;
+}

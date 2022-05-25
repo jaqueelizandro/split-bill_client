@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "../style/group.css"
 
 const Group = (props) => {
     const [group, setGroup] = useState('');
@@ -15,15 +17,17 @@ const Group = (props) => {
             body: JSON.stringify({ name: group }),
         })
         .then((resp) => resp.json())
-        .then((result) => navigate(`/groups/${ result.id }/members`))
+        .then((result) => navigate(`/groups/${ result.id }/inicialmembers`))
     };
     
     return(
-        <form onSubmit={_handleSubmit}>
-            <input placeholder="Name the group"
-                onChange={(e) => setGroup(e.target.value)} />
-            <button>+ group</button>
-        </form>
+        <div className="container">
+            <form onSubmit={_handleSubmit}>
+                <input placeholder="Enter your group name" className="form-control"
+                    onChange={(e) => setGroup(e.target.value)} />
+                <button className="btn btn-primary btn-lg btn-block">+ group</button>
+            </form>
+        </div>
     );
 };
 
