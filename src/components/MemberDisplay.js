@@ -24,17 +24,23 @@ const MemberDisplay = (props) => {
     
     return(
         <div>
-            {membersGroup.map((member) => (
-                <div key={member.id}>
-                    <p>{member.name}</p>
-                </div>
-            ))}
+            <div className="table-container">
+                {membersGroup.map((member) => (
+                    <Link to={`/groups/${params.group_id}/members/${member.id}`} key={member.id} state={ member } >
+                        <button className="btn btn-primary btn-lg btn-block btn-display">
+                            <p>{member.name}</p>
+                            <p>{member.email}</p>
+                        </button>
+                    </Link>
+                ))}
+            </div>
 
-            <Link to={`/groups/${ id }/members`}>
-                <button>Add member</button>
+            <Link to={`/groups/${ params.id }/members/new`}>
+                <button className="btn btn-primary btn-lg btn-block">+ member</button>
             </Link>
         </div>
     );
 };
 
 export default MemberDisplay;
+

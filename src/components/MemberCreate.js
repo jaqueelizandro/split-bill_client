@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "../style/style.css"
 
 const MemberCreate = (props) => {
     const [member, setMember] = useState({
@@ -31,15 +32,14 @@ const MemberCreate = (props) => {
     )};
     
     return(
-        <div>
+        <div className="form-container">
             <form onSubmit={_handleSubmit}>
-                <p>New member</p>
-                <input name="name" value={member.name} required
+                <input name="name" value={member.name} required className="form-control"
                     onChange={_handleChange} placeholder="Name" />
-                <input name="email" value={member.email} type="email" 
+                <input name="email" value={member.email} type="email" className="form-control"
                     onChange={_handleChange} placeholder="Email (optional)" />
 
-                <button>Save</button>
+                <button className="btn btn-primary btn-lg btn-block">+ member</button>
             </form>
         </div>
     );
