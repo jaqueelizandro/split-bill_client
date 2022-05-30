@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "../style/memberinicialcreate.css"
+import "../style/style.css"
 
 const MemberInicialCreate = (props) => {
     const [member, setMember] = useState({
