@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "../style/style.css"
 
 const MemberDisplay = (props) => {
     const [membersGroup, setMembersGroup] = useState([]);
 
-    const { id } = useParams();
+    // console.log(membersGroup)
+
+    const params = useParams();
+    // console.log(params)
+
     useEffect(() => {
-        fetch(`http://localhost:3000/groups/${ id }/members`, {
+        fetch(`http://localhost:3000/groups/${ params.group_id }/members`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

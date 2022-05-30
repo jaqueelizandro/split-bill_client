@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "../style/style.css"
 
 const TransactionDisplay = (props) => {
     const [transactionsGroup, setTransactionsGroup] = useState([]);
 
-    const { id } = useParams();
+    const params = useParams();
+    // console.log(params)
+
     useEffect(() => {
-        fetch(`http://localhost:3000/groups/${ id }/transactions`, {
+        fetch(`http://localhost:3000/groups/${ params.group_id }/transactions`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

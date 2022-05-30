@@ -15,9 +15,11 @@ const TransactionCreate = (props) => {
     const navigate = useNavigate();
 
     const params = useParams();
+    // console.log(params)
+
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ params.groups_id }/transactions`, {
+        fetch(`http://localhost:3000/groups/${ params.group_id }/transactions`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,7 +31,7 @@ const TransactionCreate = (props) => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:3000/groups/${ params.groups_id }/members`, {
+        fetch(`http://localhost:3000/groups/${ params.group_id }/members`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

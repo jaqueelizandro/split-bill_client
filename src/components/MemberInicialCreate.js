@@ -11,11 +11,11 @@ const MemberInicialCreate = (props) => {
     });
     const [membersGroup, setMembersGroup] = useState([]);
 
-    const { groups_id  } = useParams();
+    const params = useParams();
 
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ groups_id }/members`, {
+        fetch(`http://localhost:3000/groups/${ params.id }/members`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ const MemberInicialCreate = (props) => {
                 </table>
             </div>
 
-            <Link to={`/groups/${ groups_id }`}>
+            <Link to={`/groups/${ params.id }`}>
                 <button className="btn btn-primary btn-lg btn-block">GO TO YOUR DASHBOARD</button>
             </Link>
         </div>

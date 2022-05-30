@@ -9,10 +9,11 @@ const MemberCreate = (props) => {
     });
     const navigate = useNavigate();
 
-    const { groups_id  } = useParams();
+    const params = useParams();
+
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ groups_id }/members`, {
+        fetch(`http://localhost:3000/groups/${ params.groups_id }/members`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
