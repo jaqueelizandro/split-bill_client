@@ -1,0 +1,109 @@
+* {
+    /* border: 1px solid red; */
+    max-width: 960px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.title {
+    color: rgb(104,29,168);
+    font-size: 5em;
+}
+
+.logo {
+    font-size: 2em;
+    padding: 10px;
+}
+
+.about {
+    padding: 1em;
+    font-size: 40px;
+}
+
+.container {
+    /* position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.btn {
+    background-color: rgb(104,29,168);
+    border: rgb(104,29,168);
+    color: rgb(255, 255, 255);
+}
+
+.btn-primary:hover {
+    background-color: rgb(255, 255, 255);
+    border: rgb(255, 255, 255);
+    color: rgb(104,29,168);
+}
+
+.table-container {
+    padding: 1em;
+}
+
+.title-transaction {
+    font-size: 3rem;
+}
+
+.transaction {
+    max-width: 40rem;
+    padding: 1em;
+}
+
+.btn-display {
+    border: 1px solid rgb(217,217,214);
+    background-color: rgb(255, 255, 255);
+    color: rgb(31,32,34);
+    width: 100%;
+    justify-content: space-between;
+    max-height: 4.5rem;
+    padding: 0;
+}
+
+.btn-display:hover{
+    border: 1px solid rgb(217,217,214);
+    background-color: rgb(217,217,214);
+    color: rgb(31,32,34);
+    width: 100%;
+}
+
+.transaction-info {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    max-height: 4.5rem;
+    font-size: 15px;
+}
+
+.transaction-info .one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.transaction-info .two {
+    display: flex;
+    flex-direction: column;
+}
+
+.transaction .kind {
+    margin: 0;
+}
+
+.transaction .date {
+    color: rgb(169,169,169);
+    font-size: 10px;
+    margin: 0;
+}
+
+.form-container form {
+    display: grid;
+    row-gap: 15px;
+    max-width: 40rem;
+}
+
+.form-control {
+    text-align: start;
+}
