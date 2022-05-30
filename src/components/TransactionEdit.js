@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../style/style.css"
 
-const TransactionCreate = (props) => {
+const TransactionEdit = (props) => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [transaction, setTransaction] = useState({
-        kind: 'expense',
-        member_id: '',
-        amount: '',
-        description: '',
-        date: (new Date().toISOString().split('T')[0]),
+        kind: location.state.kind,
+        member_id: location.state.member_id,
+        amount: location.state.amount,
+        description: location.state.description,
+        date: (new Date(location.state.date).toISOString().split('T')[0]),
         image: ''
     });
     const [membersGroup, setMembersGroup] = useState([]);
-    const navigate = useNavigate();
 
     const params = useParams();
     // console.log(params)
 
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ params.group_id }/transactions`, {
-            method: 'POST',
+        fetch(`http://localhost:3000/groups/${ params.group_id }/transactions/${ params.id }`, {
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -47,10 +48,30 @@ const TransactionCreate = (props) => {
             ...prevTransaction, [event.target.name]: event.target.value
         })
     )};
+
+    const _handleDelete = (event) => {
+        event.preventDefault();
+        fetch(`http://localhost:3000/groups/${ params.group_id }/transactions/${ params.id }`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(transaction),
+        })
+        .then((resp) => {
+            if (resp.status === 204) {
+                navigate(`/groups/${ params.group_id }/transactions`)
+            }
+        })
+    }
+
+    const _handleClick = () => {
+        navigate(`/groups/${ params.group_id }/transactions`);
+    }
     
     return(
         <div className="container">
-            <p className="title-transaction">New expense</p>
+            <p className="title-transaction">{ (transaction.kind).charAt(0).toUpperCase() + (transaction.kind).slice(1) }</p>
             <div className="form-container">
                 <form onSubmit={_handleSubmit}>
                     {/* <select name="kind" value={transaction.kind} required */}
@@ -80,11 +101,15 @@ const TransactionCreate = (props) => {
                     {/* <input name="image" value={transaction.image} placeholder="Image"
                         onChange={_handleChange} /> */}
 
-                    <button className="btn btn-primary btn-lg btn-block">Save</button>
+                    <button className="btn btn-primary btn-lg btn-block">Edit</button>
                 </form>
+                    <button className="btn btn-primary btn-lg btn-block"
+                        onClick={_handleDelete}>Delete</button>
+                    <button className="btn btn-primary btn-lg btn-block"
+                        onClick={_handleClick}>Cancel</button>
             </div>
         </div>
     );
 };
 
-export default TransactionCreate;
+export default TransactionEdit;
