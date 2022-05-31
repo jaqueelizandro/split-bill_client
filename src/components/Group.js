@@ -22,7 +22,7 @@ const Group = (props) => {
     return(
         <div className="container">
             <p className="title2">sp/it</p>
-            <div className="form-container2">
+            <div className="container2">
                 <form onSubmit={_handleSubmit}>
                     <input placeholder="Enter your group name" className="form-control" required
                         onChange={(e) => setGroup(e.target.value)} />

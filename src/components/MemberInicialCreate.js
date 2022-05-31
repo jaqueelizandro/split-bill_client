@@ -44,7 +44,7 @@ const MemberInicialCreate = (props) => {
                     </ul>
                 </div>
     
-                <div className="form-container">
+                <div className="container2">
                     <form onSubmit={_handleSubmit}>
                         <input name="name" value={member.name} required className="form-control"
                             onChange={_handleChange} placeholder="Name" />
@@ -55,7 +55,7 @@ const MemberInicialCreate = (props) => {
                     </form>
                 </div>
                 
-                <div className="table-container">
+                <div className="container2">
                     <table className="table table-sm table-striped">
                         <thead>
                             <tr>
@@ -73,10 +73,12 @@ const MemberInicialCreate = (props) => {
                         </tbody>
                     </table>
                 </div>
-    
-                <Link to={`/groups/${ params.group_id }`}>
-                    <button className="btn btn-light btn-lg btn-block">GO TO YOUR DASHBOARD</button>
-                </Link>
+                
+                <div className="container2">
+                    <Link to={`/groups/${ params.group_id }`}>
+                        <button className="btn btn-light btn-lg btn-block">GO TO YOUR DASHBOARD</button>
+                    </Link>
+                </div>
             </div>
         );
     } else {
@@ -91,7 +93,7 @@ const MemberInicialCreate = (props) => {
                     </ul>
                 </div>
     
-                <div className="form-container">
+                <div className="container2">
                     <form onSubmit={_handleSubmit}>
                         <input name="name" value={member.name} required className="form-control"
                             onChange={_handleChange} placeholder="Name" />

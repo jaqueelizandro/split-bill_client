@@ -9,6 +9,11 @@
     text-align: center;
 }
 
+.container2 {
+    margin: auto;
+    max-width: 40rem;
+}
+
 .title {
     color: rgb(104,29,168);
     font-size: 10em;
@@ -41,7 +46,7 @@
 .about-list {
     padding: 1rem;
     display: inline-block; 
-	text-align: left;
+	text-align: center;
     list-style-type: none;
     line-height: 3em;
     color: rgb(105,105,105);
@@ -132,14 +137,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
 }
 
 .button-info .two {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .button-info .three {
@@ -193,17 +198,26 @@ form {
     top:30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2rem;
+    font-size: 1.5em;
 }
 
 .settle {
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(5, 1fr);
     justify-content: space-between;
-    align-content: center;
     align-items: center;
     height: 4.5rem;
     max-width: 40rem;
     margin: auto;
+    border-bottom: 1px solid rgb(169,169,169);
 }
 
+.settle p {
+    margin: 0;
+}
+
+.arrow {
+    height: 2rem;
+    align-self: center;
+    justify-self: center;
+}

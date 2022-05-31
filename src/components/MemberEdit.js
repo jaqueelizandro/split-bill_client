@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
+import $ from 'jquery';
 
 const MemberEdit = (props) => {
     const navigate = useNavigate();
@@ -21,7 +22,10 @@ const MemberEdit = (props) => {
             body: JSON.stringify(member),
         })
         .then((resp) => resp.json())
-        .then((result) => navigate(-1))
+        .then((result) => {
+            $('.modal-backdrop').remove();
+            navigate(`/groups/${ params.group_id }/members`)
+        })
     };
 
     const _handleChange = (event) => {
@@ -41,6 +45,7 @@ const MemberEdit = (props) => {
         })
         .then((resp) => {
             if (resp.status === 204) {
+                $('.modal-backdrop').remove();
                 navigate(`/groups/${ params.group_id }/members`)
             }
         })

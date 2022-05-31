@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Arrow from "../arrow.svg"
 
 const Dashboard = (props) => {
     const params = useParams();
@@ -25,50 +26,59 @@ const Dashboard = (props) => {
         return(
             <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <span className="navbar-brand mb-0 h1 title3">Sp/it</span>
-                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li className="nav-item">
-                            <Link to={`/groups/${ params.group_id }/transactions`} className="nav-link">
-                                Transactions <span className="sr-only">(current)</span>
-                            </Link>
-                        </li>
+                    <div className="container-fluid">
+                        <span className="navbar-brand mb-0 h1 title3">Sp/it</span>
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link to={`/groups/${ params.group_id }/transactions`} className="nav-link">
+                                    Transactions <span className="sr-only">(current)</span>
+                                </Link>
+                            </li>
 
-                        <li className="nav-item">
-                            <Link to={`/groups/${ params.group_id }/members`} className="nav-link">
-                                Members<span className="sr-only">(current)</span>
-                            </Link>
-                        </li>
-                    </ul>
+                            <li className="nav-item">
+                                <Link to={`/groups/${ params.group_id }/members`} className="nav-link">
+                                    Members<span className="sr-only">(current)</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
-                <p className="no-debts">No debts to settle up</p>
+                <div className="no-debts">
+                    <p>No debts to settle up.</p>
+                    <p>Add expenses in Transactions.</p>
+                </div>
+                
             </div>
         )
     } else {
         return(
             <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <span className="navbar-brand mb-0 h1 title3">Sp/it</span>
-                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li className="nav-item">
-                            <Link to={`/groups/${ params.group_id }/transactions`} className="nav-link">
-                                Transactions <span className="sr-only">(current)</span>
-                            </Link>
-                        </li>
+                    <div className="container-fluid">
+                        <span className="navbar-brand mb-0 h1 title3">Sp/it</span>
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link to={`/groups/${ params.group_id }/transactions`} className="nav-link">
+                                    Transactions <span className="sr-only">(current)</span>
+                                </Link>
+                            </li>
 
-                        <li className="nav-item">
-                            <Link to={`/groups/${ params.group_id }/members`} className="nav-link">
-                                Members<span className="sr-only">(current)</span>
-                            </Link>
-                        </li>
-                    </ul>
+                            <li className="nav-item">
+                                <Link to={`/groups/${ params.group_id }/members`} className="nav-link">
+                                    Members<span className="sr-only">(current)</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
                 <div>
-                    {debts.map((debt) => (
+                    {debts.sort((a, b) => b.settle.id - a.settle.id).map((debt) => (
                         <div key={`${debt.settle.id}-${debt.income.id}`} className="settle">
-                            <p className="settle name1">{debt.settle.name}</p>
-                            <p className="settle owes">owes</p>
-                            <p className="settle name2">{debt.income.name}</p>
-                            <p className="settle amount">$ {debt.amount}</p>
+                            <p className="name1">{debt.settle.name}</p>
+                            <img src={Arrow} className="arrow" />
+                            {/* <p className="owes">owes</p> */}
+                            <p className="name2">{debt.income.name}</p>
+                            <p className="amount">{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(debt.amount)}</p>
                             <Link to={`/groups/${ params.group_id }/settle/new`} state={ debt } className="link">
                                 <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">Settle</button>
                             </Link>

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import $ from 'jquery';
 
 const MemberCreate = (props) => {
     const navigate = useNavigate();
     const params = useParams();
-
-    console.log(params)
 
     const [member, setMember] = useState({
         name: '',
@@ -22,7 +21,10 @@ const MemberCreate = (props) => {
             body: JSON.stringify(member),
         })
         .then((resp) => resp.json())
-        .then((result) => navigate(`/groups/${ params.group_id }/members`))
+        .then((result) => {
+            $('.modal-backdrop').remove();
+            navigate(`/groups/${ params.group_id }/members`)
+        })
     };
 
     const _handleChange = (event) => {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import NumberFormat from 'react-number-format';
+import $ from 'jquery';
 
 const TransactionCreate = (props) => {
     const navigate = useNavigate();
@@ -37,7 +38,10 @@ const TransactionCreate = (props) => {
             body: JSON.stringify(transaction),
         })
         .then((resp) => resp.json())
-        .then((transaction) => navigate(`/groups/${ params.group_id }/transactions`))
+        .then((transaction) => {
+            $('.modal-backdrop').remove();
+            navigate(`/groups/${ params.group_id }/transactions`)
+        })
     };
 
     const _handleChange = (event) => {

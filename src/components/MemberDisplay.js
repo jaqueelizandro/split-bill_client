@@ -39,7 +39,7 @@ const MemberDisplay = (props) => {
             </div>
 
             <div className="list">
-                {membersGroup.map((member) => (
+                { membersGroup.sort((a, b) => b.id - a.id).map((member) => (
                     <Link to={`/groups/${params.group_id}/members/${member.id}`} key={member.id} state={ member } >
                         <button className="btn btn-light btn-display" type="button" data-toggle="modal" data-target="#exampleModal">
                             <div className="button-info">
