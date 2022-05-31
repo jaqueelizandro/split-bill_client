@@ -8,7 +8,7 @@ const Dashboard = (props) => {
     const [debts, setDebts] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/groups/${ params.group_id }/debts`, {
+        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/debts`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

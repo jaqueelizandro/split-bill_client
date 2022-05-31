@@ -14,7 +14,7 @@ const MemberEdit = (props) => {
 
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ params.group_id }/members/${ params.id }`, {
+        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/members/${ params.id }`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ const MemberEdit = (props) => {
 
     const _handleDelete = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ params.group_id }/members/${ params.id }`, {
+        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/members/${ params.id }`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

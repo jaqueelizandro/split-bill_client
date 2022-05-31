@@ -8,7 +8,7 @@ const Group = (props) => {
 
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch('http://localhost:3000/groups', {
+        fetch(`${ process.env.BACKEND_HOST}/groups`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

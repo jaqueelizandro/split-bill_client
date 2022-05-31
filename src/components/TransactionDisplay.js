@@ -8,7 +8,7 @@ const TransactionDisplay = (props) => {
     const [membersGroup, setMembersGroup] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/groups/${ params.group_id }/members`, {
+        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/members`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ const TransactionDisplay = (props) => {
         .then((resp) => resp.json())
         .then((members) => setMembersGroup(members))
 
-        fetch(`http://localhost:3000/groups/${ params.group_id }/transactions`, {
+        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/transactions`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

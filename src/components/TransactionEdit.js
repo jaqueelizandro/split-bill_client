@@ -19,7 +19,7 @@ const TransactionEdit = (props) => {
     const [membersGroup, setMembersGroup] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/groups/${ params.group_id }/members`, {
+        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/members`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ const TransactionEdit = (props) => {
 
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ params.group_id }/transactions/${ params.id }`, {
+        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/transactions/${ params.id }`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ const TransactionEdit = (props) => {
 
     const _handleDelete = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ params.group_id }/transactions/${ params.id }`, {
+        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/transactions/${ params.id }`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

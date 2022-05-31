@@ -13,7 +13,7 @@ const MemberCreate = (props) => {
 
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ params.group_id }/members`, {
+        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/members`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
