@@ -85,7 +85,7 @@ const Settle = (props) => {
                                 ))}
                             </select>    
 
-                            <NumberFormat name="amount" value={settle.amount} required className="form-control" 
+                            <NumberFormat name="amount" value={new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(settle.amount)} required className="form-control" 
                                 onChange={_handleChange} thousandSeparator={true} />
 
                             <input name="date" value={settle.date} type="date" required className="form-control"

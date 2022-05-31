@@ -95,7 +95,7 @@ const TransactionEdit = (props) => {
                             <input name="description" value={transaction.description} className="form-control"
                                 onChange={_handleChange} placeholder="Description" />
                                         
-                            <NumberFormat name="amount" value={transaction.amount} required className="form-control" 
+                            <NumberFormat name="amount" value={new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(transaction.amount)} required className="form-control" 
                                 onChange={_handleChange} thousandSeparator={true} placeholder="$100.00" />
                             
                             <input name="date" value={transaction.date} type="date" required className="form-control"
