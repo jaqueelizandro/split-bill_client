@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Home from "./Home";
 import Group from "./Group";
 import Dashboard from "./Dashboard";
@@ -16,7 +16,7 @@ import MemberInicialCreate from "./MemberInicialCreate";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path='/' element={ <Home /> } />
           <Route path='/groups' element={ <Group /> } />
@@ -31,7 +31,7 @@ function App() {
           <Route path='/groups/:group_id/members/:id' element={ <MemberEdit /> } />
           <Route path='/groups/:group_id/inicialmembers' element={ <MemberInicialCreate /> } />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
