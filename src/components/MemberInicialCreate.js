@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "../style/style.css"
+import { Link, useParams, useLocation } from "react-router-dom";
 
 const MemberInicialCreate = (props) => {
+    const params = useParams();
+    const location = useLocation();
+
     const [member, setMember] = useState({
         name: '',
         email: ''
     });
     const [membersGroup, setMembersGroup] = useState([]);
 
-    const params = useParams();
 
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/groups/${ params.id }/members`, {
+        fetch(`http://localhost:3000/groups/${ params.group_id }/members`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

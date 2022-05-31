@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "../style/style.css"
+import NumberFormat from 'react-number-format';
 
 const TransactionEdit = (props) => {
     const navigate = useNavigate();
+    const params = useParams();
     const location = useLocation();
+
     const [transaction, setTransaction] = useState({
         kind: location.state.kind,
         member_id: location.state.member_id,
@@ -16,8 +17,16 @@ const TransactionEdit = (props) => {
     });
     const [membersGroup, setMembersGroup] = useState([]);
 
-    const params = useParams();
-    // console.log(params)
+    useEffect(() => {
+        fetch(`http://localhost:3000/groups/${ params.group_id }/members`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((resp) => resp.json())
+        .then((members) => setMembersGroup(members))
+    }, []);
 
     const _handleSubmit = (event) => {
         event.preventDefault();

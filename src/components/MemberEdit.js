@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "../style/style.css"
 
 const MemberEdit = (props) => {
     const navigate = useNavigate();

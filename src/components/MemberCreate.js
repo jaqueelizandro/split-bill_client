@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "../style/style.css"
 
 const MemberCreate = (props) => {
+    const navigate = useNavigate();
+    const params = useParams();
+
     const [member, setMember] = useState({
         name: '',
         email: ''
     });
-    const navigate = useNavigate();
-
-    const params = useParams();
 
     const _handleSubmit = (event) => {
         event.preventDefault();

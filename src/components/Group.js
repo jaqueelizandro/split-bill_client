@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "../style/style.css"
 
 const Group = (props) => {
-    const [group, setGroup] = useState('');
     const navigate = useNavigate();
+
+    const [group, setGroup] = useState('');
 
     const _handleSubmit = (event) => {
         event.preventDefault();
