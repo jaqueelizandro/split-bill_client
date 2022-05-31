@@ -7,6 +7,7 @@ const Dashboard = (props) => {
     const params = useParams();
 
     const [debts, setDebts] = useState([]);
+    const [load, setLoad] = useState(false);
 
     useEffect(() => {
         fetch(`${ process.env.REACT_APP_BACKEND_HOST }/groups/${ params.group_id }/debts`, {
@@ -16,10 +17,13 @@ const Dashboard = (props) => {
             },
         })
         .then((resp) => resp.json())
-        .then((debts) => setDebts(debts))
-    }, [params.group_id]);
+        .then((debts) => {
+            setDebts(debts)
+            setLoad(true)
+        }
+    )}, [params.group_id]);
     
-    if (debts.length === 0) {
+    if (load && debts.length === 0) {
         return(
             <div className="container">
                 <Navigation />
