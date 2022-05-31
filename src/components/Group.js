@@ -16,16 +16,19 @@ const Group = (props) => {
             body: JSON.stringify({ name: group }),
         })
         .then((resp) => resp.json())
-        .then((result) => navigate(`/groups/${ result.id }/inicialmembers`))
+        .then((result) => navigate(`/groups/${ result.id }/inicialmembers`, {state: result}))
     };
     
     return(
         <div className="container">
-            <form onSubmit={_handleSubmit}>
-                <input placeholder="Enter your group name" className="form-control"
-                    onChange={(e) => setGroup(e.target.value)} />
-                <button className="btn btn-primary btn-lg btn-block">+ group</button>
-            </form>
+            <p className="title2">sp/it</p>
+            <div className="form-container2">
+                <form onSubmit={_handleSubmit}>
+                    <input placeholder="Enter your group name" className="form-control" required
+                        onChange={(e) => setGroup(e.target.value)} />
+                    <button className="btn btn-light btn-lg btn-block">+ group</button>
+                </form>
+            </div>
         </div>
     );
 };

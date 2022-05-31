@@ -41,7 +41,7 @@ const MemberEdit = (props) => {
         })
         .then((resp) => {
             if (resp.status === 204) {
-                navigate(`/groups/${ params.group_id }/transactions`)
+                navigate(`/groups/${ params.group_id }/members`)
             }
         })
     }
@@ -51,21 +51,28 @@ const MemberEdit = (props) => {
     }
     
     return(
-        <div className="container">
-            <p className="title-transaction"></p>
-            <div className="form-container">
-                <form onSubmit={_handleSubmit}>
-                    <input name="name" value={member.name} required className="form-control"
-                        onChange={_handleChange} placeholder="Name" />
-                    <input name="email" value={member.email} type="email" className="form-control"
-                        onChange={_handleChange} placeholder="Email (optional)" />
+        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Edit member</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={_handleClick}>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <form onSubmit={_handleSubmit}>
+                            <input name="name" value={member.name} required className="form-control"
+                                onChange={_handleChange} placeholder="Name" />
+                            <input name="email" value={member.email} type="email" className="form-control"
+                                onChange={_handleChange} placeholder="Email (optional)" />
 
-                    <button className="btn btn-primary btn-lg btn-block">Edit</button>
-                </form>
-                <button className="btn btn-primary btn-lg btn-block"
-                    onClick={_handleDelete}>Delete</button>
-                <button className="btn btn-primary btn-lg btn-block"
-                    onClick={_handleClick}>Cancel</button>
+                            <button className="btn btn-light btn-lg btn-block">Edit</button>
+                        </form>
+                        <button className="btn btn-light btn-lg btn-block"
+                            onClick={_handleDelete}>Delete</button>
+                    </div>
+                </div>
             </div>
         </div>
     );

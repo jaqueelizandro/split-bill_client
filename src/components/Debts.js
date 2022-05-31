@@ -1,15 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "../style/style.css"
 
 const Debts = (props) => {
-    const [debts, setDebts] = useState([]);
-
-    // console.log(debts)
-
     const params = useParams();
-    console.log(params)
+
+    const [debts, setDebts] = useState([]);
 
     useEffect(() => {
         const fetchDebts = () => {
@@ -28,7 +23,16 @@ const Debts = (props) => {
     
     return(
         <div>
-            debts
+            {debts.map((debt) => (
+                <p key={`${debt.settle.id}-${debt.income.id}`}>
+                    {debt.settle.name} owes {debt.income.name} $ {debt.amount}
+                    <Link to={`/groups/${ params.group_id }/settle/new`}
+                        state={ debt }
+                    >
+                        <button>Settle</button>
+                    </Link>
+                </p>
+            ))}
         </div>
     );
 };

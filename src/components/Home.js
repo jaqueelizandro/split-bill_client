@@ -10,12 +10,19 @@ const Group = (props) => {
     
     return(
         <div className="container">
-            <p className="title">Welcome to <span className="logo">/div</span></p>
-            <button type="button" className="btn btn-primary btn-lg btn-block"
+            <p className="title">sp/it</p>
+            <button type="button" className="btn btn-light btn-lg btn-block"
                 onClick={_handleClick}>
                     Start a group
             </button>
-            <p className="about">some text here explain the application</p>
+            <div className="about">
+                <ul className="about-list">
+                    <li>Split expenses with your friends.</li>
+                    <li>Add bills and keep track of who owes who.</li>
+                    <li>Create a group, add the members and share the link group.</li>
+                    <li>No Sign-up.</li>
+                </ul>
+            </div>
         </div>
     );
 };

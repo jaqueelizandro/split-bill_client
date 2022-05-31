@@ -60,83 +60,31 @@ const TransactionCreate = (props) => {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                <div className="modal-body">
-                    <form onSubmit={_handleSubmit}>
-                        {/* <select name="kind" value={transaction.kind} required onChange={_handleChange}> */}
-                            {/* <option value="">Choose type of transaction</option> */}
-                            {/* <option value="expense">Expense</option> */}
-                            {/* <option value="transfer">Transfer</option> */}
-                            {/* <option value="income">Income</option> */}
-                        {/* </select> */}
+                    <div className="modal-body">
+                        <form onSubmit={_handleSubmit}>
+                            <select name="member_id" value={transaction.member_id} required className="form-control" 
+                                onChange={_handleChange}>
+                                    <option value=''>Who paid</option>
+                                    {membersGroup.map((member) => (
+                                        <option key={member.id} value={member.id}>{member.name}</option>
+                                    ))}
+                            </select>
 
-                        <select name="member_id" value={transaction.member_id} required className="form-control" 
-                            onChange={_handleChange}>
-                                <option value=''>Who paid</option>
-                                {membersGroup.map((member) => (
-                                    <option key={member.id} value={member.id}>{member.name}</option>
-                                ))}
-                        </select>
+                            <input name="description" value={transaction.description} className="form-control"
+                                onChange={_handleChange} placeholder="Description" />
+                                        
+                            <NumberFormat name="amount" value={transaction.amount} required className="form-control" 
+                                onChange={_handleChange} thousandSeparator={true} placeholder="$100.00" />
+                            
+                            <input name="date" value={transaction.date} type="date" required className="form-control"
+                                onChange={_handleChange} />
 
-                        <input name="description" value={transaction.description} className="form-control"
-                            onChange={_handleChange} placeholder="Description" />
-                                    
-                        <NumberFormat name="amount" value={transaction.amount} required className="form-control" 
-                        onChange={_handleChange} thousandSeparator={true} placeholder="$100.00" />
-                        
-                        <input name="date" value={transaction.date} type="date" required className="form-control"
-                            onChange={_handleChange} />
-
-                        {/* <input name="image" value={transaction.image} placeholder="Image"
-                            onChange={_handleChange} /> */}
-
-                        <button className="btn btn-primary btn-lg btn-block">Save</button>
-                    </form>
-                </div>
-                {/* <div className="modal-footer"> */}
-                    {/* <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> */}
-                    {/* <button className="btn btn-primary btn-lg btn-block">Save</button> */}
-                {/* </div> */}
+                            <button className="btn btn-light btn-lg btn-block">Save</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        // <div className="container">
-        //     <p className="title-transaction">New expense</p>
-        //     <div className="form-container">
-        //         <form onSubmit={_handleSubmit}>
-        //             {/* <select name="kind" value={transaction.kind} required */}
-        //                 {/* onChange={_handleChange}> */}
-        //                 {/* <option value="">Choose type of transaction</option> */}
-        //                 {/* <option value="expense">Expense</option> */}
-        //                 {/* <option value="transfer">Transfer</option> */}
-        //                 {/* <option value="income">Income</option> */}
-        //             {/* </select> */}
-
-        //             <select name="member_id" value={transaction.member_id} required className="form-select form-select-sm" 
-        //                 onChange={_handleChange}>
-        //                 <option value=''>Who paid</option>
-        //                 {membersGroup.map((member) => (
-        //                     <option key={member.id} value={member.id}>{member.name}</option>
-        //                 ))}
-        //             </select>
-
-        //             <input name="description" value={transaction.description} className="form-control"
-        //                 onChange={_handleChange} placeholder="Description" />
-                                
-        //             <NumberFormat name="amount" value={transaction.amount} required className="form-control" 
-        //              onChange={_handleChange} thousandSeparator={true} prefix={'$'} placeholder="$100.00" />
-                    
-        //             <input name="date" value={transaction.date} type="date" required className="form-control"
-        //                 onChange={_handleChange} />
-
-        //             {/* <input name="image" value={transaction.image} placeholder="Image"
-        //                 onChange={_handleChange} /> */}
-
-        //             <button className="btn btn-primary btn-lg btn-block">Save</button>
-        //         </form>
-        //         <button className="btn btn-primary btn-lg btn-block"
-        //                 onClick={_handleClick}>Cancel</button>
-        //     </div>
-        // </div>
     );
 };
 

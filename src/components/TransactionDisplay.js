@@ -31,27 +31,37 @@ const TransactionDisplay = (props) => {
     
     return(
         <div className="container">
-            <div className="header">
+            <div>
                 <p className="title3">Transactions</p>
-                <Link to={`/groups/${ params.group_id }/transactions/new`}>
+                <Link to={`/groups/${ params.group_id }`} className="link">
                     <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">
-                        + transaction
+                        dashboard
                     </button>
                 </Link>
+                <Link to={`/groups/${ params.group_id }/transactions/new`} className="link">
+                    <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">
+                        + expense
+                    </button>
+                </Link>
+            </div>
+
+            <div className="header">
+                <span></span>
+                <span></span>
             </div>
 
             <div className="list">
                 { transactionsGroup.sort((a, b) => b.id - a.id).map((transaction) => (
                     <Link to={`/groups/${ params.group_id }/transactions/${ transaction.id }`}
                         key={transaction.id} state={ transaction }>
-                        <button className="btn btn-primary btn-lg btn-block btn-display">
-                            <div className="transaction-info">
-                                <div className="transaction-info one">
+                        <button className="btn btn-light btn-display" type="button" data-toggle="modal" data-target="#exampleModal">
+                            <div className="button-info">
+                                <div className="button-info one">
                                     <span className="kind">{(transaction.kind).charAt(0).toUpperCase() + (transaction.kind).slice(1)}: {transaction.description}</span>
                                     <span className="date">{new Date(transaction.date).toLocaleDateString('en-us', { day:"numeric", month:"short", year:"numeric" })}</span>
                                 </div>
 
-                                <div className="transaction-info two">
+                                <div className="button-info two">
                                     <span>{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(transaction.amount)}</span>
                                     {membersGroup.map((member) => {
                                         if (transaction.member_id === member.id) {

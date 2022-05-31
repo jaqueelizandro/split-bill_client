@@ -46,23 +46,35 @@ const Dashboard = (props) => {
     } else {
         return(
             <div className="container">
-                {debts.map((debt) => (
-                    <p key={`${debt.settle.id}-${debt.income.id}`}>
-                        {debt.settle.name} owes {debt.income.name} $ {debt.amount}
-                        <Link to={`/groups/${ params.group_id }/settle/new`}
-                            state={ debt }
-                        >
-                            <button>Settle</button>
-                        </Link>
-                    </p>
-                ))}
-                <Link to={`/groups/${ params.group_id }/transactions`}>
-                    Transactions
-                </Link>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <span className="navbar-brand mb-0 h1 title3">Sp/it</span>
+                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li className="nav-item">
+                            <Link to={`/groups/${ params.group_id }/transactions`} className="nav-link">
+                                Transactions <span className="sr-only">(current)</span>
+                            </Link>
+                        </li>
 
-                <Link to={`/groups/${ params.group_id }/members`}>
-                    Members
-                </Link>
+                        <li className="nav-item">
+                            <Link to={`/groups/${ params.group_id }/members`} className="nav-link">
+                                Members<span className="sr-only">(current)</span>
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+                <div>
+                    {debts.map((debt) => (
+                        <div key={`${debt.settle.id}-${debt.income.id}`} className="settle">
+                            <p className="settle name1">{debt.settle.name}</p>
+                            <p className="settle owes">owes</p>
+                            <p className="settle name2">{debt.income.name}</p>
+                            <p className="settle amount">$ {debt.amount}</p>
+                            <Link to={`/groups/${ params.group_id }/settle/new`} state={ debt } className="link">
+                                <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">Settle</button>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
             </div>
         )
     }
