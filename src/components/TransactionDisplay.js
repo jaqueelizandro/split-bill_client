@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Navigation from "./Navigation";
 
 const TransactionDisplay = (props) => {
     const params = useParams();
@@ -29,13 +30,9 @@ const TransactionDisplay = (props) => {
     
     return(
         <div className="container">
+            <Navigation />
             <div>
                 <p className="title3">Transactions</p>
-                <Link to={`/groups/${ params.group_id }`} className="link">
-                    <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">
-                        dashboard
-                    </button>
-                </Link>
                 <Link to={`/groups/${ params.group_id }/transactions/new`} className="link">
                     <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">
                         + expense

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import Navigation from "./Navigation";
 
 const MemberDisplay = (props) => {
     const params = useParams();
@@ -19,13 +20,9 @@ const MemberDisplay = (props) => {
     
     return(
         <div className="container">
+            <Navigation />
             <div>
                 <p className="title3">Members</p>
-                <Link to={`/groups/${ params.group_id }`} className="link">
-                    <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">
-                        dashboard
-                    </button>
-                </Link>
                 <Link to={`/groups/${ params.group_id }/members/new`} className="link">
                     <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">
                         + member
