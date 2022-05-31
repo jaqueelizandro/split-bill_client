@@ -1,55 +1,81 @@
 * {
     /* border: 1px solid red; */
-    max-width: 960px;
+    /* max-width: 960px; */
+    /* text-align: center; */
+    /* margin: 0 auto; */
+}
+
+.container {
     text-align: center;
-    margin: 0 auto;
 }
 
 .title {
     color: rgb(104,29,168);
-    font-size: 5em;
-}
-
-.logo {
-    font-size: 2em;
+    font-size: 10em;
     padding: 10px;
 }
 
-.about {
-    padding: 1em;
-    font-size: 40px;
+.title2 {
+    color: rgb(104,29,168);
+    font-size: 7em;
+    padding: 10px;
 }
 
-.container {
-    /* position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+.title3 {
+    color: rgb(104,29,168);
+    font-size: 2em;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 0;
+}
+
+.navbar .title3 {
+    color: rgb(104,29,168);
+    font-size: 1.5rem;
+}
+
+.about {
+    text-align: center;
+}
+
+.about-list {
+    padding: 1rem;
+    display: inline-block; 
+	text-align: left;
+    list-style-type: none;
+    line-height: 3em;
+    color: rgb(105,105,105);
 }
 
 .btn {
-    background-color: rgb(104,29,168);
-    border: rgb(104,29,168);
+    background-color: rgb(128,128,128);
+    border: rgb(128,128,128);
     color: rgb(255, 255, 255);
 }
 
 .btn-primary:hover {
-    background-color: rgb(255, 255, 255);
-    border: rgb(255, 255, 255);
+    background-color: rgb(220,220,220);
+    border: rgb(220,220,220);
     color: rgb(104,29,168);
+    text-decoration: none;
+    outline: none;
+}
+
+.btn-primary:active {
+    background-color: rgb(220,220,220);
+    border: rgb(220,220,220);
+    color: rgb(104,29,168);
+    outline: none;
 }
 
 .table-container {
     padding: 1em;
 }
 
-.title-transaction {
-    font-size: 3rem;
-}
-
-.transaction {
+.list {
     max-width: 40rem;
-    padding: 1em;
+    margin: auto;
+    padding-top: 1em;
 }
 
 .btn-display {
@@ -72,8 +98,13 @@
 .transaction-info {
     display: grid;
     grid-template-columns: 30% 70%;
-    max-height: 4.5rem;
+    height: 4.5rem;
     font-size: 15px;
+}
+
+.transaction-info span {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .transaction-info .one {
@@ -86,13 +117,15 @@
 .transaction-info .two {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: end;
 }
 
-.transaction .kind {
+.list .kind {
     margin: 0;
 }
 
-.transaction .date {
+.list .date {
     color: rgb(169,169,169);
     font-size: 10px;
     margin: 0;
@@ -104,6 +137,25 @@
     max-width: 40rem;
 }
 
+.form-container2 form {
+    display: grid;
+    row-gap: 15px;
+    max-width: 30rem;
+}
+
+form {
+    display: grid;
+    row-gap: 10px;
+}
+
 .form-control {
     text-align: start;
+}
+
+.no-debts {
+    position: absolute;
+    top:30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
 }
