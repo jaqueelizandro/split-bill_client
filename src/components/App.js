@@ -2,7 +2,6 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import Home from "./Home";
 import Group from "./Group";
 import Dashboard from "./Dashboard";
-import Debts from './Debts';
 import Settle from './Settle';
 import TransactionDisplay from './TransactionDisplay';
 import TransactionCreate from './TransactionCreate';
@@ -21,7 +20,6 @@ function App() {
           <Route path='/' element={ <Home /> } />
           <Route path='/groups' element={ <Group /> } />
           <Route path='/groups/:group_id' element={ <Dashboard /> } />
-          <Route path='/groups/:group_id/debts' element={ <Debts /> } />
           <Route path='/groups/:group_id/settle/new' element={ <Settle /> } />
           <Route path='/groups/:group_id/transactions' element={ <TransactionDisplay /> } />
           <Route path='/groups/:group_id/transactions/new' element={ <TransactionCreate /> } />
@@ -37,18 +35,3 @@ function App() {
 }
 
 export default App;
-
-// root.render(
-//   <BrowserRouter>
-//     <Routes>
-//       <Route path="/" element={<App />}>
-//         <Route index element={<Home />} />
-//         <Route path="teams" element={<Teams />}>
-//           <Route path=":teamId" element={<Team />} />
-//           <Route path="new" element={<NewTeamForm />} />
-//           <Route index element={<LeagueStandings />} />
-//         </Route>
-//       </Route>
-//     </Routes>
-//   </BrowserRouter>
-// );

@@ -34,19 +34,17 @@ const Dashboard = (props) => {
         return(
             <div className="container">
                 <Navigation />
-                <div>
-                    {debts.sort((a, b) => b.settle.id - a.settle.id).map((debt) => (
-                        <div key={`${debt.settle.id}-${debt.income.id}`} className="settle">
-                            <p className="name1">{debt.settle.name}</p>
-                            <img src={Arrow} alt="arrow" className="arrow" />
-                            <p className="name2">{debt.income.name}</p>
-                            <p className="amount">{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(debt.amount)}</p>
-                            <Link to={`/groups/${ params.group_id }/settle/new`} state={ debt } className="link">
-                                <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">Settle</button>
-                            </Link>
-                        </div>
-                    ))}
-                </div>
+                {debts.sort((a, b) => b.settle.id - a.settle.id).map((debt) => (
+                    <div key={`${debt.settle.id}-${debt.income.id}`} className="settle">
+                        <p className="name1">{debt.settle.name}</p>
+                        <img src={Arrow} alt="arrow" className="arrow" />
+                        <p className="name2">{debt.income.name}</p>
+                        <p className="amount">{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(debt.amount)}</p>
+                        <Link to={`/groups/${ params.group_id }/settle/new`} state={ debt } className="link">
+                            <button className="btn btn-light" type="button" data-toggle="modal" data-target="#exampleModal">Settle</button>
+                        </Link>
+                    </div>
+                ))}
             </div>
         )
     }
