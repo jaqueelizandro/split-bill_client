@@ -19,7 +19,7 @@ const TransactionEdit = (props) => {
     const [membersGroup, setMembersGroup] = useState([]);
 
     useEffect(() => {
-        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/members`, {
+        fetch(`${ process.env.REACT_APP_BACKEND_HOST }/groups/${ params.group_id }/members`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ const TransactionEdit = (props) => {
 
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/transactions/${ params.id }`, {
+        fetch(`${ process.env.REACT_APP_BACKEND_HOST }/groups/${ params.group_id }/transactions/${ params.id }`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

@@ -18,7 +18,7 @@ const TransactionCreate = (props) => {
     const [membersGroup, setMembersGroup] = useState([]);
 
     useEffect(() => {
-        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/members`, {
+        fetch(`${ process.env.REACT_APP_BACKEND_HOST }/groups/${ params.group_id }/members`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ const TransactionCreate = (props) => {
 
     const _handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/transactions`, {
+        fetch(`${ process.env.REACT_APP_BACKEND_HOST }/groups/${ params.group_id }/transactions`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

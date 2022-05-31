@@ -7,7 +7,7 @@ const MemberDisplay = (props) => {
     const [membersGroup, setMembersGroup] = useState([]);
 
     useEffect(() => {
-        fetch(`${ process.env.BACKEND_HOST}/groups/${ params.group_id }/members`, {
+        fetch(`${ process.env.REACT_APP_BACKEND_HOST }/groups/${ params.group_id }/members`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
