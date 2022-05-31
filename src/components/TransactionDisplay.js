@@ -16,9 +16,7 @@ const TransactionDisplay = (props) => {
         })
         .then((resp) => resp.json())
         .then((members) => setMembersGroup(members))
-    }, []);
 
-    useEffect(() => {
         fetch(`http://localhost:3000/groups/${ params.group_id }/transactions`, {
             method: 'GET',
             headers: {
@@ -27,7 +25,7 @@ const TransactionDisplay = (props) => {
         })
         .then((resp) => resp.json())
         .then((transactions) => setTransactionsGroup(transactions))
-    }, []);
+    }, [params.group_id]);
     
     return(
         <div className="container">
@@ -51,28 +49,31 @@ const TransactionDisplay = (props) => {
             </div>
 
             <div className="list">
-                { transactionsGroup.sort((a, b) => b.id - a.id).map((transaction) => (
-                    <Link to={`/groups/${ params.group_id }/transactions/${ transaction.id }`}
-                        key={transaction.id} state={ transaction }>
-                        <button className="btn btn-light btn-display" type="button" data-toggle="modal" data-target="#exampleModal">
-                            <div className="button-info">
-                                <div className="button-info one">
-                                    <span className="kind">{(transaction.kind).charAt(0).toUpperCase() + (transaction.kind).slice(1)}: {transaction.description}</span>
-                                    <span className="date">{new Date(transaction.date).toLocaleDateString('en-us', { day:"numeric", month:"short", year:"numeric" })}</span>
-                                </div>
+                { transactionsGroup.sort((a, b) => b.id - a.id).map((transaction) => {
+                    let member = membersGroup.find((member) => {
+                        if (transaction.member_id === member.id) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    });
+                    return  <Link to={`/groups/${ params.group_id }/transactions/${ transaction.id }`}
+                                key={transaction.id} state={ transaction }>
+                                <button className="btn btn-light btn-display" type="button" data-toggle="modal" data-target="#exampleModal">
+                                    <div className="button-info">
+                                        <div className="button-info one">
+                                            <span className="kind">{(transaction.kind).charAt(0).toUpperCase() + (transaction.kind).slice(1)}: {transaction.description}</span>
+                                            <span className="date">{new Date(transaction.date).toLocaleDateString('en-us', { day:"numeric", month:"short", year:"numeric" })}</span>
+                                        </div>
 
-                                <div className="button-info two">
-                                    <span>{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(transaction.amount)}</span>
-                                    {membersGroup.map((member) => {
-                                        if (transaction.member_id === member.id) {
-                                            return <span key={transaction.id}>{member.name}</span>
-                                        }
-                                    })}
-                                </div>
-                            </div>
-                        </button>
-                    </Link>
-                ))}
+                                        <div className="button-info two">
+                                            <span>{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(transaction.amount)}</span>
+                                            <span key={transaction.id}>{member.name}</span>
+                                        </div>
+                                    </div>
+                                </button>
+                            </Link>
+                })}
             </div>
 
 

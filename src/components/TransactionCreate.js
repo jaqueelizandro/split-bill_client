@@ -26,7 +26,7 @@ const TransactionCreate = (props) => {
         })
         .then((resp) => resp.json())
         .then((members) => setMembersGroup(members))
-    }, []);
+    }, [params.group_id]);
 
     const _handleSubmit = (event) => {
         event.preventDefault();

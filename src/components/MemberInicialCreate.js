@@ -11,7 +11,6 @@ const MemberInicialCreate = (props) => {
     });
     const [membersGroup, setMembersGroup] = useState([]);
 
-
     const _handleSubmit = (event) => {
         event.preventDefault();
         fetch(`http://localhost:3000/groups/${ params.group_id }/members`, {

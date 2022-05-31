@@ -8,19 +8,15 @@ const Dashboard = (props) => {
     const [debts, setDebts] = useState([]);
 
     useEffect(() => {
-        const fetchDebts = () => {
-            fetch(`http://localhost:3000/groups/${ params.group_id }/debts`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then((resp) => resp.json())
-            .then((debts) => setDebts(debts))
-        }
-
-        fetchDebts();
-    }, []);
+        fetch(`http://localhost:3000/groups/${ params.group_id }/debts`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((resp) => resp.json())
+        .then((debts) => setDebts(debts))
+    }, [params.group_id]);
     
     if (debts.length === 0) {
         return(
@@ -75,7 +71,7 @@ const Dashboard = (props) => {
                     {debts.sort((a, b) => b.settle.id - a.settle.id).map((debt) => (
                         <div key={`${debt.settle.id}-${debt.income.id}`} className="settle">
                             <p className="name1">{debt.settle.name}</p>
-                            <img src={Arrow} className="arrow" />
+                            <img src={Arrow} alt="arrow" className="arrow" />
                             {/* <p className="owes">owes</p> */}
                             <p className="name2">{debt.income.name}</p>
                             <p className="amount">{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(debt.amount)}</p>

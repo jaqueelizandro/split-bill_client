@@ -15,7 +15,7 @@ const MemberDisplay = (props) => {
         })
         .then((resp) => resp.json())
         .then((members) => setMembersGroup(members))
-    }, []);
+    }, [params.group_id]);
     
     return(
         <div className="container">

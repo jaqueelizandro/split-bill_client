@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import NumberFormat from 'react-number-format';
+import $ from 'jquery';
 
 const TransactionEdit = (props) => {
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ const TransactionEdit = (props) => {
         })
         .then((resp) => resp.json())
         .then((members) => setMembersGroup(members))
-    }, []);
+    }, [params.group_id]);
 
     const _handleSubmit = (event) => {
         event.preventDefault();
@@ -38,7 +39,10 @@ const TransactionEdit = (props) => {
             body: JSON.stringify(transaction),
         })
         .then((resp) => resp.json())
-        .then((transaction) => navigate(-1))
+        .then((transaction) => {
+            $('.modal-backdrop').remove();
+            navigate(`/groups/${ params.group_id }/transactions`)
+        })
     };
 
     const _handleChange = (event) => {
@@ -58,6 +62,7 @@ const TransactionEdit = (props) => {
         })
         .then((resp) => {
             if (resp.status === 204) {
+                $('.modal-backdrop').remove();
                 navigate(`/groups/${ params.group_id }/transactions`)
             }
         })

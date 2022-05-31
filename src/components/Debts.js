@@ -7,19 +7,15 @@ const Debts = (props) => {
     const [debts, setDebts] = useState([]);
 
     useEffect(() => {
-        const fetchDebts = () => {
-            fetch(`http://localhost:3000/groups/${ params.group_id }/debts`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then((resp) => resp.json())
-            .then((debts) => setDebts(debts))
-        }
-
-        fetchDebts();
-    }, []);
+        fetch(`http://localhost:3000/groups/${ params.group_id }/debts`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((resp) => resp.json())
+        .then((debts) => setDebts(debts))
+    }, [params.group_id ]);
     
     return(
         <div>
