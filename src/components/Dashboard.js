@@ -23,7 +23,18 @@ const Dashboard = (props) => {
         }
     )}, [params.group_id]);
     
-    if (load && debts.length === 0) {
+    if (!load) {
+        return(
+            <div className="container">
+                <Navigation />
+                <div className="no-debts">
+                    <p>Loading.</p>
+                </div>
+                
+            </div>
+        )
+    }
+    else if (load && debts.length === 0) {
         return(
             <div className="container">
                 <Navigation />
