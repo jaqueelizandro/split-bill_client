@@ -21,7 +21,7 @@ If you (like many other people) are tired of making sign-in / sign-up for every 
 
 ## Tech Stack
 * React
-* Ruby API
+* Rails API ([GitHub Repo](https://github.com/jaqueelizandro/split-bill_server))
 * PostgreSQL
 * CSS
 * Bootstrap
