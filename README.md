@@ -31,7 +31,7 @@ If you (like many other people) are tired of making sign-in / sign-up for every 
 
 ## Images
 ![gif](./public/gif.gif)
-![homepage](./public/home.png)
-![dashboard](./public/dashboard.png)
-![transactions](./public/transaction.png)
-![members](./public/members.png)
+![homepage](./public/home.png | width=250)
+![dashboard](./public/dashboard.png | width=250)
+![transactions](./public/transaction.png | width=250)
+![members](./public/members.png | width=250)
