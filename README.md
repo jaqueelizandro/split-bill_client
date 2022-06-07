@@ -31,9 +31,7 @@ If you (like many other people) are tired of making sign-in / sign-up for every 
 
 ## Images
 ![gif](./public/gif.gif)
-<img src="./public/home.png" width="250" />
-<img src="./public/dashboard.png" width="250" />
-<img src="./public/transaction.png" width="250" />
-<img src="./public/members.png" width="250" />
-
-
+<img src="./public/home.png" width="300" />
+<img src="./public/dashboard.png" width="300" />
+<img src="./public/transaction.png" width="300" />
+<img src="./public/members.png" width="300" />
